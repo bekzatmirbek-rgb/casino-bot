@@ -1,0 +1,15 @@
+import os
+import telebot
+
+TOKEN = os.environ.get("8452130052:AAEmgL6VpmuGNi6NAX88byrKV7q-QGxyy-o")
+bot = telebot.TeleBot(TOKEN)
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.reply_to(message, "Салам! Мен GitHub Actions аркылуу онлайнмын 🤖")
+
+@bot.message_handler(func=lambda m: True)
+def echo(message):
+    bot.reply_to(message, f"Сен жаздың: {message.text}")
+
+bot.infinity_polling()
